@@ -19,7 +19,7 @@ import CardPriority from './CardPriority';
 
 
 const Priority = (props) => {
-    // let todono = 0;
+
     const [todono, settodono] = useState();
     let usersdata = [''];
     const [tick, setTick] = useState([{ "id": "CAM" }]);
@@ -28,27 +28,27 @@ const Priority = (props) => {
     const [hightpriority, sethightpriority] = useState([]);
     const [mediumpriority, setmediumpriority] = useState([]);
     const [urgent, seturgent] = useState([]);
-    // const [backlog, setbacklog] = useState([]);
 
-    // const [count, setCount] = useState(0);
-    // let todonum = 0;
+
+
+
     const [todonum, setTodonum] = useState(0);
 
-    // const [first, setfirst] = useState(second)
+
 
     useEffect(() => {
 
-        hello();
-        // count();
+        getData();
+
 
 
     }, []);
     useEffect(() => {
-      count();
+        count();
     }, [tick])
-    
 
-    async function hello() {
+
+    async function getData() {
         try {
             const response = await fetch("https://api.quicksell.co/v1/internal/frontend-assignment");
 
@@ -57,7 +57,7 @@ const Priority = (props) => {
 
             setTick(result.tickets);
 
-            // console.log("tickets", tick);
+
 
         } catch (error) {
             console.error("Error:", error);
@@ -66,35 +66,35 @@ const Priority = (props) => {
 
     }
     function count() {
-        let noprioritypre=[];
-        let lowprioritypre=[];
-        let mediumprioritypre=[];
-        let hightprioritypre=[];
-        let urgetnpre=[];
+        let noprioritypre = [];
+        let lowprioritypre = [];
+        let mediumprioritypre = [];
+        let hightprioritypre = [];
+        let urgetnpre = [];
 
         tick.map((ticket) => {
-            // if (ticket.status === "Todo") {
-            //     settodono(todono + 1)
-            //     console.log("smd")
-            // }
-            if (ticket.priority === 0) noprioritypre.push(ticket);
-            if (ticket.priority === 1)  lowprioritypre.push(ticket);
-            if (ticket.priority === 2)  mediumprioritypre.push(ticket);
-            if (ticket.priority === 3)  hightprioritypre.push(ticket);
-            if (ticket.priority === 4)  urgetnpre.push(ticket);
 
-            // console.log("todo",todono);
+
+
+
+            if (ticket.priority === 0) noprioritypre.push(ticket);
+            if (ticket.priority === 1) lowprioritypre.push(ticket);
+            if (ticket.priority === 2) mediumprioritypre.push(ticket);
+            if (ticket.priority === 3) hightprioritypre.push(ticket);
+            if (ticket.priority === 4) urgetnpre.push(ticket);
+
+
 
         }
-        
+
         )
-        
+
         noprioritypre.sort((a, b) => a.title.localeCompare(b.title));
         lowprioritypre.sort((a, b) => a.title.localeCompare(b.title));
         mediumprioritypre.sort((a, b) => a.title.localeCompare(b.title));
         hightprioritypre.sort((a, b) => a.title.localeCompare(b.title));
         urgetnpre.sort((a, b) => a.title.localeCompare(b.title));
-       
+
         setnopriority(noprioritypre);
         setlowpriority(lowprioritypre);
         setmediumpriority(mediumprioritypre);
@@ -102,13 +102,13 @@ const Priority = (props) => {
         seturgent(urgetnpre);
 
     }
-    
-return (
+
+    return (
         <div className='Boards'>
             <div className='Board'>
                 <div className='boardHeading'>
                     <img src={nopriorityimg} className='headingImg' alt=''></img>
-                    <p className='cText' style={{width: "190px"}} >No-Priority</p>
+                    <p className='cText' style={{ width: "190px" }} >No-Priority</p>
                     <p className='cText'>{nopriority.length}</p>
                     <div className='boardHeading' id='pluske'>
 
@@ -124,9 +124,9 @@ return (
                         nopriority.length > 0 &&
                         nopriority.map((ticket) => {
                             return (
-                                (ticket.priority === 0 && <CardPriority  ticket={ticket}></CardPriority>)
+                                (ticket.priority === 0 && <CardPriority ticket={ticket}></CardPriority>)
                             )
-                        })     
+                        })
                     }
                 </div>
 
@@ -149,11 +149,11 @@ return (
                     {
                         urgent.length > 0 &&
                         urgent.map((ticket) => {
-                            // { ticket.status === "Todo" && (settodono(todono + 1)) }
-                            // if(ticket.status === "Todo"){
-                            //     settodono(todono+1)
-                            // }
-                            // console.log(todono)
+
+
+
+
+
 
                             return (
                                 (ticket.priority === 4 && <CardPriority ticket={ticket}></CardPriority>)
@@ -189,7 +189,7 @@ return (
                 </div>
 
             </div>
-            <div className='Board'> 
+            <div className='Board'>
                 <div className='boardHeading'>
                     <img src={mediumimg} className='headingImg' alt=''></img>
                     <p className='cText'>Medium</p>

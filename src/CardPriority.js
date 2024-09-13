@@ -22,14 +22,14 @@ import usr5 from './usr-5.png'
 import usr6 from './usr-6.png'
 import usr7 from './usr-7.png'
 
-// import img from 
+
 
 const CardPriority = (props) => {
-    // let available = true;
+    
     const [available, setavailable] = useState(false);
-    // console.log({props});
+    
     let imgt=`imgr${props.ticket.priority.toString()}`;
-    // console.log(imgt);
+    
     let dotuser;
     
     const [users, setusers] = useState([]);
@@ -37,13 +37,13 @@ const CardPriority = (props) => {
 
     useEffect(() => {
 
-        hello();
-        // count();
+        getData();
+        
 
 
     }, []);
 
-    async function hello() {
+    async function getData() {
         try {
             const response = await fetch("https://api.quicksell.co/v1/internal/frontend-assignment");
 

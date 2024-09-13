@@ -1,7 +1,6 @@
 import React from 'react'
 import todo from './to do.png'
 import { useEffect, useState } from 'react';
-import Card from './Card.js'
 import './Status.css'
 import plusmore from './plusmore.png'
 import done from './Done.png'
@@ -9,10 +8,10 @@ import Cancelled from './canceled.png'
 import backlogimg from './backlog.png'
 import inprogressimg from './in progress.png'
 import CardStatus from './CardStatus';
-// import { useNavigate } from 'react-router-dom';
+
 
 const Status = (props) => {
-    // const navigate = useNavigate();
+    
     const [pref, setpref] = useState(localStorage.getItem('grouping'))
     const [todono, settodono] = useState([]);
     let usersdata = [''];
@@ -26,24 +25,24 @@ const Status = (props) => {
     const [users, setusers] = useState([]);
     let available=true;
 
-    // const [count, setCount] = useState(0);
-    // let todonum = 0;
+    
+    
     const [todonum, setTodonum] = useState([]);
 
-    // const [first, setfirst] = useState(second)
+    
 
     useEffect(() => {
 
-        hello();
-        // count();
+        getData();
+        
 
 
     }, []);
 
     useEffect(() => {
         count();
-        // Order();
-        // console.log("inprogress", todono);
+        
+        
     }, [tick,Order]);
 
     useEffect(() => {
@@ -53,7 +52,7 @@ const Status = (props) => {
     
 
 
-    async function hello() {
+    async function getData() {
         try {
             const response = await fetch("https://api.quicksell.co/v1/internal/frontend-assignment");
 
@@ -75,26 +74,26 @@ const Status = (props) => {
         let cancelledpre = [];
         let backlogpre = [];
         let inprogresspre = [];
-        // console.log("order",Order);
+        
 
         tick.map((ticket) => {
-            // if (ticket.status === "Todo") {
-            //     settodono(todono + 1)
-            //     console.log("smd")
-            // }
+            
+            
+            
+            
             if (ticket.status === "Todo") todopre.push(ticket);
             if (ticket.status === "Done") donepre.push(ticket);
             if (ticket.status === "cancelled") cancelledpre.push(ticket);
             if (ticket.status === "Backlog") backlogpre.push(ticket);
             if (ticket.status === "In progress") inprogresspre.push(ticket);
 
-            // console.log("todo", todono);
+            
             
         }
 
         )
-        // const sortedPlayers = [...players].sort((a, b) => parseInt(a.age) - parseInt(b.age));
-        // const sortedPlayers1 = [...players].sort((a, b) => a.name.localeCompare(b.name));
+        
+        
         if(Order==="Title"){
             todopre.sort((a, b) => a.title.localeCompare(b.title));
         inprogresspre.sort((a, b) => a.title.localeCompare(b.title));
@@ -122,23 +121,23 @@ const Status = (props) => {
         setinProgressno(inprogresspre);
         }
         
-        // console.clear();
-        // console.log("todo",temptodo);
+        
+        
 
         setTodonum(todopre);
         setbacklog(backlogpre);
         setcancelled(cancelledpre);
         setdoneno(donepre);
         setinProgressno(inprogresspre);
-        // console.log("order",Order);
-        // console.log("backlog",backlog);
+        
+        
 
     }
 
 
 
 
-    // count();
+    
 
 
 

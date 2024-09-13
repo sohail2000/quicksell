@@ -1,11 +1,11 @@
-import React from 'react'
+// import React from 'react'
 
-function Boards  () {
+// function Boards  () {
 
-  return (
-    <div>
-        <p>Board</p>
-    </div>
-  );
-}
-export default Boards;
+//   return (
+//     <div>
+//         <p>Board</p>
+//     </div>
+//   );
+// }
+// export default Boards;

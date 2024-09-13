@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './Card.css';
-import logo from './logo.svg';
 
-import priority from './priority.svg';
 import tag from './tag.png'
 import img0 from './nopriority.png'
 import img4 from './urgent.png'
@@ -22,14 +20,14 @@ import usr5 from './usr-5.png'
 import usr6 from './usr-6.png'
 import usr7 from './usr-7.png'
 
-// import img from 
+
 
 const CardStatus = (props) => {
-    // let available = true;
+    
     const [available, setavailable] = useState(false);
-    // console.log({props});
+    
     let imgt=`imgr${props.ticket.priority.toString()}`;
-    // console.log(imgt);
+    
     let dotuser;
     
     const [users, setusers] = useState([]);
@@ -37,13 +35,13 @@ const CardStatus = (props) => {
 
     useEffect(() => {
 
-        hello();
-        // count();
+        getData();
+        
 
 
     }, []);
 
-    async function hello() {
+    async function getData() {
         try {
             const response = await fetch("https://api.quicksell.co/v1/internal/frontend-assignment");
 
